@@ -2,7 +2,7 @@
 /*
 Plugin Name: Woocommerce Free Shipping Notification
 Plugin URI: https://github.com/sygency/woocommerce-free-shipping-notification
-Description: This plugin shows how much money user should spend in order to get free shipping if available.
+Description: This plugin shows how much money user should spend in order to get free shipping if available. Extended with Hungarian translation.
 Version: 1.2
 Author: UAB Synergy Technologies
 Author URI: http://www.sygency.com
@@ -12,7 +12,14 @@ License: GPL2
 */
 
 // block direct access to plugin file
-defined('ABSPATH') or die( __("No script kiddies please!", 'tinyrelated' ) );
+defined('ABSPATH') or die( __("No script kiddies please!", 'syg' ) );
+
+function tr_plugin_init() {
+   $plugin_dir = basename(dirname(__FILE__));
+   // load_plugin_textdomain( 'syg', false, $plugin_dir );
+   load_plugin_textdomain( 'syg', false, 'woocommerce-free-shipping-notification/languages' );
+}
+add_action('plugins_loaded', 'tr_plugin_init');
 
 /**
  * Cart Notice of Free Shipping
