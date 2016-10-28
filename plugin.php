@@ -34,7 +34,7 @@ function cart_notice() {
     $current = WC()->cart->subtotal;
     if ( $current < $maximum ) {
         $number = $maximum - $current;
-        echo '<div class="woocommerce-message">' . __('You need to add ', 'syg') .woo_currency(). woo_round_price($number) .__(' more to your cart, in order to use free shipping.', 'syg'). '</div>';
+        echo '<div class="woocommerce-message free-shipping-notify">' . __('You need to add ', 'syg'). woo_round_price($number)  . woo_currency() .__(' more to your cart, in order to use free shipping.', 'syg'). '</div>';
     }
 }
 add_action( 'woocommerce_before_cart', 'cart_notice' );
@@ -57,7 +57,7 @@ if ( ! function_exists( 'woocommerce_mini_cart' ) ) {
         // Display Message
         if ( $current < $maximum ) {
             $number = $maximum - $current;
-            echo '<div class="woocommerce-message">' . __('You need to add  ', 'syg') .woo_currency(). woo_round_price($number) .__(' more to your cart, in order to use free shipping.', 'syg'). '</div>';
+            echo '<div class="woocommerce-message">' . __('You need to add  ', 'syg') .woo_round_price($number) . woo_currency(). __(' more to your cart, in order to use free shipping.', 'syg'). '</div>';
         }
 
         // Show Default Cart View
@@ -84,6 +84,6 @@ function woo_currency( ) {
  * @return string
  */
 function woo_round_price($number) {
-    $numberformatted = number_format($number, 2, '.', '');
+    $numberformatted = number_format($number, 0, '.', '');
     return $numberformatted;
 }
