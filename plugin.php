@@ -38,6 +38,7 @@ function cart_notice() {
     }
 }
 add_action( 'woocommerce_before_cart', 'cart_notice' );
+add_action( 'woocommerce_checkout_before_customer_details', 'cart_notice'  );
 
 /**
  * Mini Cart Notice of Free Shipping
